@@ -16,7 +16,16 @@
  * @returns {number}
  */
 function repair(width, length, height) {
-    return undefined;
+    const squareMetersPerCan = 16; // Количество квадратных метров, которое можно покрасить одной банкой краски
+
+    // Вычисляем общую площадь стен в офисе
+    // Общая площадь всех четырех стен можно выразить как сумму площадей каждой стены. Площадь стены можно вычислить, умножив ее ширину на высоту.
+    const totalArea = 2 * (width * height + length * height);
+
+    // Вычисляем количество банок краски, необходимых для покраски стен
+    const cansNeeded = Math.ceil(totalArea / squareMetersPerCan);
+
+    return cansNeeded;
 }
 
 module.exports = repair;

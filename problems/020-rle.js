@@ -15,14 +15,17 @@ function rle(value) {
 
     for (let i = 0; i < value.length; i++) {
         if (value[i] === value[i + 1]) {
-            count++;
+            // Если текущий символ равен следующему символу
+            count++; // Увеличиваем счетчик
         } else {
             if (count > 1) {
-                compressed += count + value[i];
+                // Если количество повторений больше 1
+                compressed += count + value[i]; // Добавляем сжатое представление в compressed
             } else {
-                compressed += value[i];
+                // Если количество повторений равно 1
+                compressed += value[i]; // Добавляем текущий символ в compressed
             }
-            count = 1;
+            count = 1; // Сбрасываем счетчик обратно в 1
         }
     }
 
