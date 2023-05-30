@@ -16,7 +16,26 @@
  * @returns {(number|undefined)}
  */
 function getWinner(points) {
-    return undefined;
+    let totalTeam1 = 0;
+    let totalTeam2 = 0;
+
+    //проходим циклом по каждой четверти и вычисляем общее количество очков каждом team
+    for(let i=0;i<points.length;i++){
+        let quarterPoints=points[i].split('-') //разделаем строку на два элемента массива
+        let team1Points=parseInt(quarterPoints[0],10);// Количество очков команды 1 в четверти
+        let team2Points=parseInt(quarterPoints[1],10);
+        //10 указывает на использование десятичной системы счисления при преобразовании строки в число.
+        //Если параметр не указан, то по умолчанию используется основание 10.
+        totalTeam1+=team1Points;
+        totalTeam2+=team2Points;
+    }
+
+    if(totalTeam1>totalTeam2) return 1;
+    else if(totalTeam1<totalTeam2)return 2;
+    else return undefined
+
 }
 
 module.exports = getWinner;
+
+

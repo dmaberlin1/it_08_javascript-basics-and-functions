@@ -18,7 +18,20 @@
  * @returns {number}
  */
 function getSpringMeltStreak(temperature) {
-    return undefined;
+    let maxLength = 0;
+    let currentLength = 0;
+
+    temperature.forEach((temp) => {
+        if (temp > 0) {
+            currentLength++;
+            maxLength = Math.max(maxLength, currentLength);
+            // Math.max используем для определения максимального значения между текущей длиной последовательности и предыдущим максимальным значением.
+        } else {
+            currentLength = 0;
+        }
+    });
+
+    return maxLength;
 }
 
 module.exports = getSpringMeltStreak;

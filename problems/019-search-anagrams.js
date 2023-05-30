@@ -12,7 +12,39 @@
  * @returns {string}
  */
 function searchAnagrams(value) {
-    return undefined;
+    const words = value.split(' ');
+    const anagramWords = [];
+
+    function isAnagram(x, y) {
+        if (x.length !== y.length) {
+            return false;
+        }
+
+        const sortedX = x.toLowerCase().split('').sort().join('');
+        const sortedY = y.toLowerCase().split('').sort().join('');
+
+        return sortedX === sortedY;
+    }
+
+    for (let i = 0; i < words.length; i++) {
+        const currentWord = words[i];
+        let isCurrentWordAnagram = false;
+
+        for (let j = 0; j < words.length; j++) {
+            if (i !== j && isAnagram(currentWord, words[j])) {
+                isCurrentWordAnagram = true;
+                break;
+            }
+        }
+
+        if (isCurrentWordAnagram && !anagramWords.includes(currentWord)) {
+            anagramWords.push(currentWord);
+        }
+    }
+
+    return anagramWords.join(' ');
 }
+
+
 
 module.exports = searchAnagrams;

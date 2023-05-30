@@ -16,7 +16,24 @@
  * @returns {string}
  */
 function decrypt(secret) {
-    return undefined;
+    return [...secret].map((char) => {
+        if (char === ' ') {
+            // Если символ является пробелом, возвращаем его без изменений
+            return ' ';
+        } else {
+            // Иначе получаем код символа
+            const charCode = char.charCodeAt(0);
+            if (charCode === 122) {
+                // Если код символа является 122 (код символа 'z'), то
+                // возвращаем символ 'a', так как 'a' следует за 'z'
+                return 'a';
+            } else {
+                // Иначе возвращаем символ, следующий за текущим символом
+                return String.fromCharCode(charCode + 1);
+            }
+        }
+    }).join('');
+    // Преобразуем массив расшифрованных символов обратно в строку
 }
 
 module.exports = decrypt;

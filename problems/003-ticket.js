@@ -14,7 +14,17 @@
  * @returns {boolean}
  */
 function checkTicket(number) {
-    return undefined;
+    if(number.length !==6) return false;
+
+    let firstHalf=number.slice(0,3)
+    let secondHalf=number.slice(3); //от третьего и до конца
+
+    let sumFirstHalf=[...firstHalf].reduce((accum,num)=>accum+Number(num),0)
+    let sumSecondHalf=[...secondHalf].reduce((accum,num)=>accum+Number(num),0)
+
+    let isLucky= sumFirstHalf===sumSecondHalf
+    return isLucky
+
 }
 
 module.exports = checkTicket;

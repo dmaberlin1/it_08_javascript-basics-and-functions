@@ -18,7 +18,25 @@
  * @returns {boolean}
  */
 function validatePassword(password) {
-    return undefined;
+    // Проверяем длину пароля
+    if (password.length < 7) {
+        return false;
+    }
+    // Проверяем наличие строчной английской буквы
+    if (!/[a-z]/.test(password)) {
+        return false;
+    }
+    // Проверяем наличие заглавной английской буквы
+    if (!/[A-Z]/.test(password)) {
+        return false;
+    }
+    // Проверяем наличие цифры
+    if (!/\d/.test(password)) {
+        return false;
+    }
+    //можно написать через || -Или
+    // Если все условия выполнены, пароль является криптостойким
+    return true;
 }
 
 module.exports = validatePassword;

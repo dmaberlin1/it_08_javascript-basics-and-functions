@@ -13,7 +13,19 @@
  * @returns {number[]}
  */
 function union(a, b) {
-    return undefined;
+   const setA=new Set(a); //Создаем множество из массива a
+   const setB=new Set(b); //Создаем множество из массива b
+   const intersection=[]; //хранение пересечений
+
+
+   for(const num of setA){
+        if(setB.has(num)) intersection.push(num); // Добавляем число в пересечение, если оно присутствует и в setB
+   }
+
+   return intersection.sort((x,y)=>x-y); // Возвращаем пересечение, упорядоченное по возрастанию
+    // Если результат отрицателен, то x будет расположено перед y в отсортированном массиве. Если результат положителен, то x будет расположено после y.
+    // Если результат равен нулю, то порядок элементов не меняется.
+
 }
 
 module.exports = union;

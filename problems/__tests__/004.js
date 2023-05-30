@@ -5,3 +5,6 @@ test('Тестирование задачи "004-orizuru"', () => {
     expect(computeOrizurus(24)).toEqual([4, 16, 4]);
     expect(computeOrizurus(11)).toEqual([1, 9, 1]);
 });
+
+
+

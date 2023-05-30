@@ -19,7 +19,30 @@
  * @returns {boolean}
  */
 function isIpValid(address) {
-    return undefined;
+    // Разбиваем адрес на отдельные части по точке
+    const parts = address.split('.');
+
+    // Проверяем количество частей
+    if (parts.length !== 4) {
+        return false;
+    }
+
+    // Проверяем каждую часть адреса
+    for (const part of parts) {
+        // Проверяем, что часть является числом
+        if (!/^\d+$/.test(part)) {
+            return false;
+        }
+
+        // Проверяем, что число находится в диапазоне от 0 до 255
+        const num = Number(part);
+        if (num < 0 || num > 255) {
+            return false;
+        }
+    }
+
+    // Если все проверки пройдены успешно, адрес является правильным IP-адресом
+    return true;
 }
 
 module.exports = isIpValid;

@@ -12,7 +12,17 @@
  * @returns {number|undefined}
  */
 function getPower(n) {
-    return -1;
+    let power = 0;
+    while (n > 1) {
+        if (n % 2 !== 0) return undefined;
+        n = n / 2;
+        power++;
+    }
+    return power;
+    // пока n>1 цикл крутиться
+    // Если n является четным числом, мы делим его на 2 и увеличиваем значение power на 1.
+    // Цикл продолжается до тех пор, пока n не станет равным 1.
+    // В конце мы возвращаем значение power в качестве результата.
 }
 
 module.exports = getPower;

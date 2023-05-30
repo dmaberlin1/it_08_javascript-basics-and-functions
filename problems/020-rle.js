@@ -10,7 +10,23 @@
  * @returns {string}
  */
 function rle(value) {
-    return undefined;
+    let compressed = '';
+    let count = 1; // Счетчик для подсчета повторяющихся символов
+
+    for (let i = 0; i < value.length; i++) {
+        if (value[i] === value[i + 1]) {
+            count++;
+        } else {
+            if (count > 1) {
+                compressed += count + value[i];
+            } else {
+                compressed += value[i];
+            }
+            count = 1;
+        }
+    }
+
+    return compressed;
 }
 
 module.exports = rle;

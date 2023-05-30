@@ -13,7 +13,15 @@
  * @returns {number}
  */
 function sum(n) {
-    return undefined;
+    if(n<1){
+        return 1;
+    }
+
+
+    // Используем формулу суммы арифметической прогрессии:
+    // Сумма чисел от 1 до n = (n * (n + 1)) / 2
+    return (n * (n+1))/2;
 }
 
 module.exports = sum;
+
