@@ -14,7 +14,22 @@
  * @returns {string}
  */
 function hexToRgb(color) {
-    return undefined;
+    // Удаляем символ # из строки цвета, если он присутствует
+    color = color.replace('#', '');
+
+    // Проверяем длину строки цвета, чтобы определить формат (сокращенный или полный)
+    if (color.length === 3) {
+        // Для сокращенного формата, удваиваем каждую цифру
+        color = color.split('').map(c => c + c).join('');
+    }
+
+    // Извлекаем значения компонентов цвета (каждые две цифры)
+    const red = parseInt(color.substring(0, 2), 16);
+    const green = parseInt(color.substring(2, 4), 16);
+    const blue = parseInt(color.substring(4, 6), 16);
+
+    // Возвращаем строку в формате RGB
+    return `rgb(${red}, ${green}, ${blue})`;
 }
 
 module.exports = hexToRgb;
